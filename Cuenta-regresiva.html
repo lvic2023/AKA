@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            
+            color: #fff;
+            font-family: Impact, sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        h1 {
+			color: #424949;
+            font-family: Impact, sans-serif;
+            font-size: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contador {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+		
+        .cifra {
+            background-color: #0080FF;
+            color: #fff;
+            font-weight: bold;
+            font-size: 3rem;
+            margin: 0 1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+            animation: parpadear 1s linear infinite;
+        }
+
+        .texto-cifra {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes parpadear {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+		
+    </style>
+</head>
+<body>
+    <h1>Curso de defensa personal femenina</h1>
+	<!-- <h1>Esto puede ser otro título</h1> -->
+    <div class="contador">
+		<div class="cifra-container">
+			<div class="cifra" id="dias"></div>
+			<div class="texto-cifra">Días</div>
+		</div>
+		<div class="cifra-container">
+			<div class="cifra" id="horas"></div>
+			<div class="texto-cifra">Horas</div>
+		</div>
+		<div class="cifra-container">
+			<div class="cifra" id="minutos"></div>
+			<div class="texto-cifra">Minutos</div>
+		</div>
+		<div class="cifra-container">
+			<div class="cifra" id="segundos"></div>
+			<div class="texto-cifra">Segundos</div>
+		</div>
+	</div>
+    <script>
+        function actualizarCuentaRegresiva() {
+            var fechaObjetivo = new Date("July 29, 2023 09:00:00").getTime();
+            var ahora = new Date().getTime();
+            var tiempoRestante = fechaObjetivo - ahora;
+
+            var diasRestantes = Math.floor(tiempoRestante / (1000 * 60 * 60 * 24));
+            var horasRestantes = Math.floor((tiempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutosRestantes = Math.floor((tiempoRestante % (1000 * 60 * 60)) / (1000 * 60));
+            var segundosRestantes = Math.floor((tiempoRestante % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerHTML = diasRestantes;
+            document.getElementById("horas").innerHTML = horasRestantes;
+            document.getElementById("minutos").innerHTML = minutosRestantes;
+            document.getElementById("segundos").innerHTML = segundosRestantes;
+        }
+
+        setInterval(actualizarCuentaRegresiva, 1000);
+    </script>
+</body>
+</html>
